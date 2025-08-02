@@ -1,0 +1,252 @@
+\<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddharth Gajjar - Portfolio</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* A slightly more neutral, professional background */
+            color: #334155;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-900">Siddharth Gajjar</h1>
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex space-x-6 text-sm font-medium">
+                    <li><a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300">About</a></li>
+                    <li><a href="#experience" class="text-gray-600 hover:text-blue-600 transition duration-300">Experience</a></li>
+                    <li><a href="#skills" class="text-gray-600 hover:text-blue-600 transition duration-300">Skills</a></li>
+                    <li><a href="#projects" class="text-gray-600 hover:text-blue-600 transition duration-300">Projects</a></li>
+                    <li><a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center py-20 bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-3xl shadow-2xl mb-12 animate-fade-in">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Siddharth Gajjar</h2>
+            <p class="text-lg md:text-xl font-light max-w-3xl mx-auto">
+                Experienced professional at the intersection of Embedded Systems, Data Analysis, and Machine Learning.
+            </p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="bg-white p-8 md:p-12 rounded-2xl shadow-lg mb-12">
+            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Professional Summary</h3>
+            <p class="text-lg leading-relaxed">
+                Innovative and detail-oriented Embedded Developer with expertise in IoT, currently expanding skills in Artificial Intelligence and Data Analysis. Proficient in crafting innovative solutions for data analysis, management, machine learning, and Python development. Skilled in modeling for machine learning applications and proficient in both hardware and software aspects of embedded systems. Proven track record of leading projects from inception to completion, dedicated to continuous learning and staying updated on emerging technologies and industry trends.
+            </p>
+        </section>
+
+        <!-- Expertise Section with multiple roles -->
+        <section id="expertise" class="mb-12">
+            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Areas of Expertise</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105">
+                    <h4 class="text-xl font-semibold mb-2 text-blue-700">Embedded Developer</h4>
+                    <p class="text-gray-600">Expertise in C/C++, RTOS, IoT solutions, and a wide range of microcontrollers like ESP32, ARM, and Raspberry Pi.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105">
+                    <h4 class="text-xl font-semibold mb-2 text-blue-700">Data Analyst</h4>
+                    <p class="text-gray-600">Proficient in data management, visualization with Power BI, and using libraries like NumPy and Pandas for analysis.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105">
+                    <h4 class="text-xl font-semibold mb-2 text-blue-700">Machine Learning Developer</h4>
+                    <p class="text-gray-600">Skilled in building models with TensorFlow, OpenCV, and Scikit-learn, with hands-on experience in LSTM for real-time applications.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105">
+                    <h4 class="text-xl font-semibold mb-2 text-blue-700">Agentic AI Enthusiast</h4>
+                    <p class="text-gray-600">Deeply interested in agentic AI and prompt engineering, with certification from DeepLearning.AI.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="mb-12">
+            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Professional Experience</h3>
+            <div class="space-y-8">
+                <!-- Job 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+                        <h4 class="text-xl font-semibold text-gray-900">Student Research Assistant</h4>
+                        <span class="text-sm text-gray-500">April 2025 – Present</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Digital Integration Centre of Excellence (DICE), Regina, Canada</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Developed and simulated MAVLink-based communication protocols in Python for UAV telemetry.</li>
+                        <li>Integrated Software Defined Radio (SDR) workflows with GNU Radio for wireless signal processing and communication.</li>
+                        <li>Contributed to protocol design, software-side debugging, and documentation for scalable, hardware-independent systems.</li>
+                    </ul>
+                </div>
+                <!-- Job 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+                        <h4 class="text-xl font-semibold text-gray-900">Embedded Product Developer (Project Leader)</h4>
+                        <span class="text-sm text-gray-500">December 2016 – July 2023</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">I Technology, Surat, India</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Developed and optimized embedded software using Python, C, and C++ for ESP32, Arduino, and Raspberry Pi platforms.</li>
+                        <li>Deployed IoT devices enabled with Wi-Fi, GSM, and Bluetooth for data collection, supervision, and control.</li>
+                        <li>Enhanced compiler efficiency through graph optimization and low-level code debugging.</li>
+                        <li>Managed and visualized data using MSSQL and Power BI for projects like the EOT Crane Monitoring System.</li>
+                    </ul>
+                </div>
+                <!-- Job 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+                        <h4 class="text-xl font-semibold text-gray-900">Embedded System Developer (Team Member)</h4>
+                        <span class="text-sm text-gray-500">January 2015 - November 2016</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Namrata Engineering, India</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Developed Firmware using C, and C++ for embedded systems over Keil, Atmel Studio, and Arduino IDE.</li>
+                        <li>Deployed RF, LoRa, GSM, and Bluetooth-enabled IoT devices for data collection and supervision tasks.</li>
+                        <li>Designed circuits and integrated various sensors, modules, and protocols.</li>
+                    </ul>
+                </div>
+                <!-- Job 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+                        <h4 class="text-xl font-semibold text-gray-900">Control System Developer (Team Member)</h4>
+                        <span class="text-sm text-gray-500">July 2012 – December 2014</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Hydro Purification Technology, India</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Designed and developed an embedded system to accurately measure and monitor water parameters.</li>
+                        <li>Implemented notification features to alert users via messaging and Server Applications.</li>
+                        <li>Received "Employee of the Year 2014" for designing a robust and innovative system.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="bg-white p-8 md:p-12 rounded-2xl shadow-lg mb-12">
+            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Key Skills</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Embedded Systems -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-900">Embedded Systems</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">C/C++</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">Python</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">FreeRTOS</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">STM32</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">ESP32</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">Raspberry Pi</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">UART/I2C/SPI</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">Wi-Fi/LoRa/GSM</span>
+                    </div>
+                </div>
+                <!-- Data Analysis & ML -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-900">Data Analysis & Machine Learning</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">NumPy</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Pandas</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Scikit-Learn</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">TensorFlow</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">OpenCV</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">LSTM Models</span>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">SQL/MongoDB</span>
+                    </div>
+                </div>
+                <!-- Tools & Methodologies -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-900">Tools & Methodologies</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">VS Code</span>
+                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Git</span>
+                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">GNU Radio</span>
+                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Agile/Kanban</span>
+                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Linux</span>
+                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Prompt Engineering</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="bg-white p-8 md:p-12 rounded-2xl shadow-lg mb-12">
+            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Projects</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
+                    <h4 class="text-xl font-semibold mb-2">American Sign Language Recognition</h4>
+                    <p class="text-gray-700">Developed using Python and advanced libraries like TensorFlow and MediaPipe, this project utilizes LSTM machine learning models to identify gestures in real time with 89% accuracy.</p>
+                </div>
+                <!-- Project 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
+                    <h4 class="text-xl font-semibold mb-2">Cybersecurity Project (DICE)</h4>
+                    <p class="text-gray-700">Developed a simulation of a high-secured MAVLink protocol over Software Defined Radios using Python, including penetration testing and technical documentation.</p>
+                </div>
+                <!-- Project 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
+                    <h4 class="text-xl font-semibold mb-2">EOT Crane Management System</h4>
+                    <p class="text-gray-700">Built on ESP32 with FreeRTOS, using MODBUS RTU and Wi-Fi to collect data for predictive maintenance, with data visualized on a Power BI dashboard.</p>
+                </div>
+                <!-- Project 4 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
+                    <h4 class="text-xl font-semibold mb-2">Solar Panel Cleaner Robot</h4>
+                    <p class="text-gray-700">A real-world embedded systems project on an ESP32 microcontroller with FreeRTOS, focusing on bidirectional DC motor control and battery management.</p>
+                </div>
+                <!-- Project 5 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
+                    <h4 class="text-xl font-semibold mb-2">Water Treatment Plant Control</h4>
+                    <p class="text-gray-700">Developed a system using an ARM Cortex M3 Controller to measure water parameters and log readings to a server for predictive maintenance.</p>
+                </div>
+                <!-- Project 6 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
+                    <h4 class="text-xl font-semibold mb-2">Cathodic Protection Data Logger</h4>
+                    <p class="text-gray-700">Built on ATMEGA328, this device was designed for efficient data logging of voltage measurements using LoRa protocol to communicate with a gateway.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="bg-white p-8 md:p-12 rounded-2xl shadow-lg mb-12">
+            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Certifications</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>**DeepLearning.AI:** ChatGPT Prompt Engineering for Developers.</li>
+                <li>**LinkedIn Learning:** Reinforcement Learning, SQL.</li>
+                <li>**OpenCV Bootcamp:** Certification for Machine Learning Algorithms, TensorFlow, and Python.</li>
+                <li>**Solo Learn Certification:** Advanced Python Programming.</li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="text-center py-12 bg-gray-900 text-white rounded-2xl shadow-xl">
+            <h3 class="text-3xl font-bold mb-4">Let's Connect</h3>
+            <p class="text-lg mb-6">If you would like to discuss a project or an opportunity, please get in touch.</p>
+            <div class="flex justify-center space-x-6 text-sm md:text-base font-medium">
+                <a href="mailto:siddharth.m.gajjar@gmail.com" class="bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">Email</a>
+                <a href="https://www.linkedin.com/in/Siddharth-gajjar" target="_blank" class="bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">LinkedIn</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-6 mt-12">
+        <p>&copy; 2025 Siddharth Gajjar. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
