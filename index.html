@@ -3,292 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siddharth Gajjar - Portfolio</title>
-    <!-- Use the Inter font from Google Fonts -->
+    <title>Siddharth Gajjar | AI, ML & Embedded Engineer</title>
+    <meta name="description" content="Portfolio of Siddharth Gajjar - Specialist in Machine Learning, YOLO Vision, and Embedded Systems.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* A slightly more neutral, professional background */
-            color: #334155;
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hero-gradient { background: radial-gradient(circle at 0% 0%, #1e3a8a 0%, #0f172a 50%); }
+        
+        /* Smooth Entrance Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Animated Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #60a5fa, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+
+        /* Float effect for hardware icons */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 5s ease-in-out infinite; }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 antialiased">
+<body class="antialiased">
 
-    <!-- Header Section -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
-            <h1 class="text-2xl font-bold text-gray-900">Siddharth Gajjar</h1>
-            <nav class="mt-4 md:mt-0">
-                <ul class="flex space-x-6 text-sm font-medium">
-                    <li><a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300">About</a></li>
-                    <li><a href="#experience" class="text-gray-600 hover:text-blue-600 transition duration-300">Experience</a></li>
-                    <li><a href="#skills" class="text-gray-600 hover:text-blue-600 transition duration-300">Skills</a></li>
-                    <li><a href="#projects" class="text-gray-600 hover:text-blue-600 transition duration-300">Projects</a></li>
-                    <li><a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300">Contact</a></li>
+    <header class="fixed w-full z-50 glass border-b border-white/5">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-extrabold tracking-tighter text-blue-400 italic">SIDDHARTH.AI</h1>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8 text-sm font-medium">
+                    <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
+                    <li><a href="#experience" class="hover:text-blue-400 transition">Experience</a></li>
+                    <li><a href="#hardware" class="hover:text-blue-400 transition">Embedded</a></li>
+                    <li><a href="#projects" class="hover:text-blue-400 transition">Projects</a></li>
                 </ul>
             </nav>
+            <a href="mailto:Siddharth.m.gajjar@gmail.com" class="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-full text-xs font-bold transition shadow-lg shadow-blue-500/20">CONTACT</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-12">
-
-        <!-- Hero Section -->
-        <section id="hero" class="text-center py-20 bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-3xl shadow-2xl mb-12 animate-fade-in">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Siddharth Gajjar</h2>
-            <p class="text-lg md:text-xl font-light max-w-3xl mx-auto">
-                Experienced professional at the intersection of Embedded Systems, Data Analysis, and Machine Learning.
-            </p>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="bg-white p-8 md:p-12 rounded-2xl shadow-lg mb-12">
-            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Professional Summary</h3>
-            <p class="text-lg leading-relaxed">
-                Innovative and detail-oriented Embedded Developer with expertise in IoT, currently expanding skills in Artificial Intelligence and Data Analysis. Proficient in crafting innovative solutions for data analysis, management, machine learning, and Python development. Skilled in modeling for machine learning applications and proficient in both hardware and software aspects of embedded systems. Proven track record of leading projects from inception to completion, dedicated to continuous learning and staying updated on emerging technologies and industry trends.
-            </p>
-        </section>
-
-        <!-- Expertise Section with multiple roles -->
-        <section id="expertise" class="mb-12">
-            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Areas of Expertise</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105">
-                    <h4 class="text-xl font-semibold mb-2 text-blue-700">Embedded Developer</h4>
-                    <p class="text-gray-600">Expertise in Embedded C/C++, RTOS, IoT solutions, and a wide range of microcontrollers like ESP32, ARM, and Raspberry Pi.</p>
+    <main>
+        <section class="hero-gradient min-h-screen flex items-center justify-center text-center px-4 pt-20">
+            <div class="max-w-4xl">
+                <div class="reveal inline-block px-4 py-1 mb-6 glass rounded-full text-blue-400 text-xs font-bold tracking-widest uppercase">
+                    Available for Full-Time Roles | Canada
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105">
-                    <h4 class="text-xl font-semibold mb-2 text-blue-700">Data Analyst</h4>
-                    <p class="text-gray-600">Proficient in data management, visualization with Power BI, and using libraries like NumPy and Pandas for analysis.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105">
-                    <h4 class="text-xl font-semibold mb-2 text-blue-700">Machine Learning Developer</h4>
-                    <p class="text-gray-600">Skilled in building models with TensorFlow, OpenCV, and Scikit-learn, with hands-on experience in LSTM for real-time applications.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105">
-                    <h4 class="text-xl font-semibold mb-2 text-blue-700">Agentic AI Enthusiast</h4>
-                    <p class="text-gray-600">Deeply interested in agentic AI and prompt engineering, with certification from DeepLearning.AI.</p>
+                <h2 class="reveal text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                    Bridging the gap between <br><span class="text-gradient">Hardware & Intelligence</span>
+                </h2>
+                <p class="reveal text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto" style="transition-delay: 200ms;">
+                    Dynamic Developer specializing in **Computer Vision (YOLO)**, **Machine Learning Pipelines**, and **Embedded IoT Systems**. 
+                    Expert at deploying AI on the edge.
+                </p>
+                <div class="reveal flex flex-wrap justify-center gap-4" style="transition-delay: 400ms;">
+                    <a href="#experience" class="bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-blue-400 transition">Experience</a>
+                    <a href="https://linkedin.com/in/Siddharth-gajjar" target="_blank" class="glass px-8 py-3 rounded-full font-bold hover:bg-white/10 transition">LinkedIn</a>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="mb-12">
-            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Professional Experience</h3>
-            <div class="space-y-8">
-                <!-- Job 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
-                        <h4 class="text-xl font-semibold text-gray-900"> Research Assistant</h4>
-                        <span class="text-sm text-gray-500">April 2025 – July 2025</span>
-                    </div>
-                    <p class="text-gray-600 mb-4">Digital Integration Centre of Excellence (DICE), Regina, Canada</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>Developed and simulated MAVLink-based communication protocols in Python for UAV telemetry.</li>
-                        <li>Integrated Software Defined Radio (SDR) workflows with GNU Radio for wireless signal processing and communication.</li>
-                        <li>Contributed to protocol design, software-side debugging, and documentation for scalable, hardware-independent systems.</li>
-                    </ul>
-                </div>
-                <!-- Job 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
-                        <h4 class="text-xl font-semibold text-gray-900">Embedded Product Developer </h4>
-                        <span class="text-sm text-gray-500">December 2016 – December 2022</span>
-                    </div>
-                    <p class="text-gray-600 mb-4">I Technology, Surat, India</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>Developed and optimized embedded software using Python, C, and C++ for ESP32, Arduino, and Raspberry Pi platforms.</li>
-                        <li>Deployed IoT devices enabled with Wi-Fi, GSM, and Bluetooth for data collection, supervision, and control.</li>
-                        <li>Enhanced compiler efficiency through graph optimization and low-level code debugging.</li>
-                        <li>Managed and visualized data using MSSQL and Power BI for projects like the EOT Crane Monitoring System.</li>
-                    </ul>
-                </div>
-                <!-- Job 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
-                        <h4 class="text-xl font-semibold text-gray-900">Embedded System Developer (Team Member)</h4>
-                        <span class="text-sm text-gray-500">January 2015 - November 2016</span>
-                    </div>
-                    <p class="text-gray-600 mb-4">Namrata Engineering, India</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>Developed Firmware using C, and C++ for embedded systems over Keil, Atmel Studio, and Arduino IDE.</li>
-                        <li>Deployed RF, LoRa, GSM, and Bluetooth-enabled IoT devices for data collection and supervision tasks.</li>
-                        <li>Designed circuits and integrated various sensors, modules, and protocols.</li>
-                    </ul>
-                </div>
-                <!-- Job 4 -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
-                        <h4 class="text-xl font-semibold text-gray-900">Control System Developer (Team Member)</h4>
-                        <span class="text-sm text-gray-500">July 2012 – December 2014</span>
-                    </div>
-                    <p class="text-gray-600 mb-4">Hydro Purification Technology, India</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>Designed and developed an embedded system to accurately measure and monitor water parameters.</li>
-                        <li>Implemented notification features to alert users via messaging and Server Applications.</li>
-                        <li>Received "Employee of the Year 2014" for designing a robust and innovative system.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="bg-white p-8 md:p-12 rounded-2xl shadow-lg mb-12">
-            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Key Skills</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Embedded Systems -->
-                <div>
-                    <h4 class="text-xl font-semibold mb-3 text-gray-900">Embedded Systems</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">C/C++</span>
-                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">Python</span>
-                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">FreeRTOS</span>
-                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">STM32</span>
-                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">ESP32</span>
-                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">Raspberry Pi</span>
-                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">UART/I2C/SPI</span>
-                        <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">Wi-Fi/LoRa/GSM</span>
+        <section id="about" class="py-24 container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h3 class="text-3xl font-bold mb-6">Innovative <span class="text-blue-500">Problem Solver</span></h3>
+                    <p class="text-gray-300 leading-relaxed text-lg mb-6">
+                        With a double Post-Graduation in **AI & Data Analytics** and **Technology Management**, I specialize in building systems that don't just process data, but act on it. 
+                    </p>
+                    <p class="text-gray-400 mb-8">
+                        Whether it’s training a YOLO model for agricultural detection or architecting a patented communication protocol for embedded networks, I focus on scalable, hardware-independent software solutions.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass p-5 rounded-2xl border-l-4 border-blue-500">
+                            <span class="block text-sm text-gray-400 uppercase font-bold">Latest Tech</span>
+                            <span class="text-white font-medium">Docker, YOLO, TensorFlow</span>
+                        </div>
+                        <div class="glass p-5 rounded-2xl border-l-4 border-purple-500">
+                            <span class="block text-sm text-gray-400 uppercase font-bold">Innovation</span>
+                            <span class="text-white font-medium">Patent in Submission</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Data Analysis & ML -->
-                <div>
-                    <h4 class="text-xl font-semibold mb-3 text-gray-900">Data Analysis & Machine Learning</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">NumPy</span>
-                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Pandas</span>
-                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
-                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Scikit-Learn</span>
-                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">TensorFlow</span>
-                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">OpenCV</span>
-                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">LSTM Models</span>
-                        <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">SQL/MongoDB</span>
-                    </div>
-                </div>
-                <!-- Tools & Methodologies -->
-                <div>
-                    <h4 class="text-xl font-semibold mb-3 text-gray-900">Tools & Methodologies</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">VS Code</span>
-                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Arduino</span>
-                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">STM32Cube</span>
-                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Git</span>
-                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">GNU Radio</span>
-                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Agile/Kanban</span>
-                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Linux</span>
-                        <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Prompt Engineering</span>
+                <div class="reveal relative">
+                    <div class="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full"></div>
+                    <div class="relative grid grid-cols-2 gap-4">
+                        <div class="p-6 glass rounded-3xl animate-float">
+                            <h4 class="text-blue-400 font-bold mb-2">AI & ML</h4>
+                            <p class="text-xs text-gray-400">Computer Vision, LSTM, Predictive Modeling</p>
+                        </div>
+                        <div class="p-6 glass rounded-3xl animate-float" style="animation-delay: 1s;">
+                            <h4 class="text-purple-400 font-bold mb-2">Embedded</h4>
+                            <p class="text-xs text-gray-400">RTOS, ESP32, STM32, Firmware C++</p>
+                        </div>
+                        <div class="p-6 glass rounded-3xl animate-float" style="animation-delay: 2s;">
+                            <h4 class="text-green-400 font-bold mb-2">Infrastructure</h4>
+                            <p class="text-xs text-gray-400">Docker, MySQL, Bash, Git</p>
+                        </div>
+                        <div class="p-6 glass rounded-3xl animate-float" style="animation-delay: 3.5s;">
+                            <h4 class="text-pink-400 font-bold mb-2">Deployment</h4>
+                            <p class="text-xs text-gray-400">Cloud (Render), Linux Systems</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="bg-white p-8 md:p-12 rounded-2xl shadow-lg mb-12">
-            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Projects</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
-                    <!-- Placeholder Image - Replace with your project image -->
-                    <img src="https://placehold.co/400x225/e2e8f0/4a5568?text=ASL+Recognition" alt="An image of the American Sign Language Recognition project in action." class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h4 class="text-xl font-semibold mb-2">American Sign Language Recognition</h4>
-                    <p class="text-gray-700">Developed using Python and advanced libraries like TensorFlow and MediaPipe, this project utilizes LSTM machine learning models to identify gestures in real time with 89% accuracy.</p>
-                </div>
-                <!-- Project 2 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
-                    <!-- Placeholder Image - Replace with your project image -->
-                    <img src="https://placehold.co/400x225/e2e8f0/4a5568?text=Cybersecurity+Project" alt="An image of the Cybersecurity Project (DICE) simulation interface." class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h4 class="text-xl font-semibold mb-2">Cybersecurity Project (DICE)</h4>
-                    <p class="text-gray-700">Developed a simulation of a high-secured MAVLink protocol over Software Defined Radios using Python, including penetration testing and technical documentation.</p>
-                </div>
-                <!-- Project 3 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
-                    <!-- Placeholder Image - Replace with your project image -->
-                    <img src="https://placehold.co/400x225/e2e8f0/4a5568?text=EOT+Crane+System" alt="A dashboard visualization of the EOT Crane Management System data." class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h4 class="text-xl font-semibold mb-2">EOT Crane Management System</h4>
-                    <p class="text-gray-700">Built on ESP32 with FreeRTOS, using MODBUS RTU and Wi-Fi to collect data for predictive maintenance, with data visualized on a Power BI dashboard.</p>
-                </div>
-                <!-- Project 4 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
-                    <!-- Placeholder Image - Replace with your project image -->
-                    <img src="https://placehold.co/400x225/e2e8f0/4a5568?text=Solar+Panel+Robot" alt="An image of the Solar Panel Cleaner Robot in action." class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h4 class="text-xl font-semibold mb-2">Solar Panel Cleaner Robot</h4>
-                    <p class="text-gray-700">A real-world embedded systems project on an ESP32 microcontroller with FreeRTOS, focusing on bidirectional DC motor control and battery management.</p>
-                </div>
-                <!-- Project 5 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
-                    <!-- Placeholder Image - Replace with your project image -->
-                    <img src="https://placehold.co/400x225/e2e8f0/4a5568?text=Water+Treatment+Plant" alt="An image of the water treatment plant control system." class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h4 class="text-xl font-semibold mb-2">Water Treatment Plant Control</h4>
-                    <p class="text-gray-700">Developed a system using an ARM Cortex M3 Controller to measure water parameters and log readings to a server for predictive maintenance.</p>
-                </div>
-                <!-- Project 6 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
-                    <!-- Placeholder Image - Replace with your project image -->
-                    <img src="https://placehold.co/400x225/e2e8f0/4a5568?text=Data+Logger" alt="An image of the Cathodic Protection Data Logger device." class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h4 class="text-xl font-semibold mb-2">Cathodic Protection Data Logger</h4>
-                    <p class="text-gray-700">Built on ATMEGA328, this device was designed for efficient data logging of voltage measurements using LoRa protocol to communicate with a gateway.</p>
+        <section id="experience" class="py-24 bg-slate-900/50">
+            <div class="container mx-auto px-6">
+                <h3 class="text-3xl font-bold mb-16 text-center">Professional Journey</h3>
+                <div class="max-w-4xl mx-auto space-y-12">
+                    
+                    <div class="reveal relative pl-8 border-l-2 border-blue-600">
+                        <div class="absolute w-4 h-4 bg-blue-600 rounded-full -left-[9px] top-0 shadow-[0_0_15px_#2563eb]"></div>
+                        <span class="text-blue-400 font-mono text-sm uppercase tracking-widest">Oct 2025 - Present</span>
+                        <h4 class="text-2xl font-bold text-white mt-1">AI & Machine Learning Developer</h4>
+                        <p class="text-gray-400 mb-4 font-medium italic">mPowered Technology Solutions | Regina, SK</p>
+                        <ul class="text-gray-300 space-y-2 text-sm leading-relaxed">
+                            <li>• Architecting Computer Vision systems utilizing **YOLO v8/v10** for high-accuracy object detection.</li>
+                            <li>• Containerizing ML applications using **Docker** to ensure reproducible inference environments.</li>
+                            <li>• Implementing end-to-end data pipelines: from cleaning raw datasets to model evaluation.</li>
+                        </ul>
+                    </div>
+
+                    <div class="reveal relative pl-8 border-l-2 border-slate-700">
+                        <div class="absolute w-4 h-4 bg-slate-700 rounded-full -left-[9px] top-0"></div>
+                        <span class="text-gray-500 font-mono text-sm">Apr 2025 - July 2025</span>
+                        <h4 class="text-2xl font-bold text-white mt-1">Research Assistant</h4>
+                        <p class="text-gray-400 mb-4 font-medium italic">Digital Integration Centre of Excellence (DICE)</p>
+                        <p class="text-sm text-gray-300">Co-authored a groundbreaking communication protocol for embedded systems (Patent Pending). Focused on MAVLink-based communication for UAV telemetry using Python.</p>
+                    </div>
+
+                    <div id="hardware" class="reveal relative pl-8 border-l-2 border-slate-700">
+                        <div class="absolute w-4 h-4 bg-slate-700 rounded-full -left-[9px] top-0"></div>
+                        <span class="text-gray-500 font-mono text-sm">Dec 2016 - Dec 2022</span>
+                        <h4 class="text-2xl font-bold text-white mt-1">Embedded Product Developer</h4>
+                        <p class="text-gray-400 mb-4 font-medium italic">I Technology | India</p>
+                        <ul class="text-gray-300 space-y-2 text-sm">
+                            <li>• 7+ years leading hardware/software co-design for industrial IoT projects.</li>
+                            <li>• Mastered low-level debugging and **RTOS (FreeRTOS)** for ESP32 and ARM Cortex.</li>
+                            <li>• Designed the EOT Crane Monitoring System, integrating data logging with Power BI visualization.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="bg-white p-8 md:p-12 rounded-2xl shadow-lg mb-12">
-            <h3 class="text-3xl font-bold mb-6 text-gray-900 border-b-2 border-blue-600 pb-2">Certifications</h3>
-            <ul class="list-disc list-inside space-y-2 text-gray-700">
-                <!-- Cert 1: DeepLearning.AI -->
-                <li>
-                    <a href="#" target="_blank" class="text-blue-600 hover:text-blue-800 transition duration-300 font-semibold">
-                        **DeepLearning.AI:** ChatGPT Prompt Engineering for Developers.
-                    </a>
-                </li>
-                <!-- Cert 2: LinkedIn Learning -->
-                <li>
-                    <a href="#" target="_blank" class="text-blue-600 hover:text-blue-800 transition duration-300 font-semibold">
-                        **LinkedIn Learning:** Reinforcement Learning, SQL.
-                    </a>
-                </li>
-                <!-- Cert 3: OpenCV Bootcamp -->
-                <li>
-                    <a href="#" target="_blank" class="text-blue-600 hover:text-blue-800 transition duration-300 font-semibold">
-                        **OpenCV Bootcamp:** Certification for Machine Learning Algorithms, TensorFlow, and Python.
-                    </a>
-                </li>
-                <!-- Cert 4: Solo Learn -->
-                <li>
-                    <a href="#" target="_blank" class="text-blue-600 hover:text-blue-800 transition duration-300 font-semibold">
-                        **Solo Learn Certification:** Advanced Python Programming.
-                    </a>
-                </li>
-                <!-- Cert 5: Kaggle Certification -->
-                <li>
-                    <a href="#" target="_blank" class="text-blue-600 hover:text-blue-800 transition duration-300 font-semibold">
-                        **Kaggle Certification:** Advanced Python Programming, Data Analytics, Machine Learning.
-                    </a>
-                </li>
-            </ul>
+        <section id="projects" class="py-24 container mx-auto px-6">
+            <h3 class="text-3xl font-bold mb-12">Featured Engineering <span class="text-blue-500">Labs</span></h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="reveal glass rounded-3xl overflow-hidden group">
+                    <div class="h-48 bg-blue-900/20 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xs font-bold tracking-tighter glass px-3 py-1 rounded-full uppercase">Predictive Analytics</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Housing Price Platform</h4>
+                        <p class="text-gray-400 text-xs mb-4">A complete regression-based platform deployed on Render, using multi-source feature engineering.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20 font-bold">Python</span>
+                            <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20 font-bold">Scikit-Learn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal glass rounded-3xl overflow-hidden group" style="transition-delay: 150ms;">
+                    <div class="h-48 bg-purple-900/20 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xs font-bold tracking-tighter glass px-3 py-1 rounded-full uppercase">Computer Vision</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Agri-Feature YOLO</h4>
+                        <p class="text-gray-400 text-xs mb-4">Advanced object detection model trained on agricultural datasets to identify crop health and features.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-1 rounded border border-purple-500/20 font-bold">YOLO v10</span>
+                            <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-1 rounded border border-purple-500/20 font-bold">OpenCV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal glass rounded-3xl overflow-hidden group" style="transition-delay: 300ms;">
+                    <div class="h-48 bg-green-900/20 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xs font-bold tracking-tighter glass px-3 py-1 rounded-full uppercase">Embedded Systems</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Solar Cleaner Bot</h4>
+                        <p class="text-gray-400 text-xs mb-4">Autonomous robot powered by ESP32, featuring custom PCB design and motor control algorithms.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[10px] bg-green-500/10 text-green-400 px-2 py-1 rounded border border-green-500/20 font-bold">C++</span>
+                            <span class="text-[10px] bg-green-500/10 text-green-400 px-2 py-1 rounded border border-green-500/20 font-bold">FreeRTOS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="text-center py-12 bg-gray-900 text-white rounded-2xl shadow-xl">
-            <h3 class="text-3xl font-bold mb-4">Let's Connect</h3>
-            <p class="text-lg mb-6">If you would like to discuss a project or an opportunity, please get in touch.</p>
-            <div class="flex justify-center space-x-6 text-sm md:text-base font-medium">
-                <a href="mailto:siddharth.m.gajjar@gmail.com" class="bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">Email</a>
-                <a href="https://www.linkedin.com/in/Siddharth-gajjar" target="_blank" class="bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">LinkedIn</a>
+        <section class="py-24 container mx-auto px-6 text-center">
+            <div class="reveal glass p-12 rounded-[3rem] border-t border-white/20 relative overflow-hidden">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-blue-600/20 blur-[100px]"></div>
+                <h3 class="text-4xl font-extrabold mb-6 relative">Let's build the <span class="text-blue-400">Future</span>.</h3>
+                <p class="text-gray-400 text-lg mb-10 max-w-xl mx-auto relative">Open to roles in AI Engineering, Software Development, and IoT Architecture. Based in Saskatchewan, ready to relocate.</p>
+                
+                <div class="flex flex-wrap justify-center gap-6 relative">
+                    <a href="mailto:Siddharth.m.gajjar@gmail.com" class="bg-white text-black px-10 py-4 rounded-full font-bold hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition">Email Siddharth</a>
+                    <a href="tel:+13065105025" class="border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-white/5 transition">+1 306 510 5025</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white text-center py-6 mt-12">
-        <p>&copy; 2025 Siddharth Gajjar. All rights reserved.</p>
+    <footer class="py-12 text-center text-gray-600 text-sm border-t border-white/5">
+        &copy; 2026 Siddharth Gajjar | AI & Embedded Engineer
     </footer>
 
+    <script>
+        // Reveal on scroll logic
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
-
-
