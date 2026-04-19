@@ -1,251 +1,797 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siddharth Gajjar | AI, ML & Embedded Engineer</title>
-    <meta name="description" content="Portfolio of Siddharth Gajjar - Specialist in Machine Learning, YOLO Vision, and Embedded Systems.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .hero-gradient { background: radial-gradient(circle at 0% 0%, #1e3a8a 0%, #0f172a 50%); }
-        
-        /* Smooth Entrance Animations */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        /* Animated Gradient Text */
-        .text-gradient {
-            background: linear-gradient(to right, #60a5fa, #a78bfa, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siddharth Gajjar | AI · ML · Embedded Engineer</title>
+<meta name="description" content="Siddharth Gajjar — AI/ML Developer & Embedded Systems Engineer. Computer Vision, YOLO, TensorFlow, ESP32, RTOS. Patent-pending researcher. Available for full-time roles in Canada.">
+<meta name="keywords" content="Siddharth Gajjar, AI Engineer, Machine Learning, Computer Vision, YOLO, Embedded Systems, IoT, ESP32, Python, Docker, Regina Saskatchewan Canada, ML Engineer Canada">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:root{
+  --bg:#05070f;--bg2:#080c1a;--surface:#0f1628;--surface2:#151d35;
+  --accent:#00c8f8;--accent2:#7c5cbf;--accent3:#00f5a0;--warn:#f5a623;
+  --text:#dde4f5;--muted:#5c6fa8;--border:rgba(0,200,248,.12);
+  --glow:0 0 24px rgba(0,200,248,.35);
+  --fh:'Syne',sans-serif;--fm:'DM Mono',monospace;--fb:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none;}
+#cur{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .08s;}
+#cur-r{position:fixed;width:32px;height:32px;border:1px solid rgba(0,200,248,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .18s ease,width .25s,height .25s,border-color .25s;}
+body.hov #cur{transform:translate(-50%,-50%) scale(2.5);opacity:.4;}
+body.hov #cur-r{width:52px;height:52px;border-color:var(--accent);}
+#canvas-bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;}
 
-        /* Float effect for hardware icons */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-float { animation: float 5s ease-in-out infinite; }
-    </style>
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;backdrop-filter:blur(24px) saturate(1.5);background:rgba(5,7,15,.75);border-bottom:1px solid var(--border);}
+.logo{font-family:var(--fh);font-size:1rem;font-weight:800;color:var(--accent);text-decoration:none;}
+.logo em{color:var(--text);font-style:normal;}
+.nav-links{display:flex;gap:1.75rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.75rem;font-family:var(--fm);letter-spacing:.06em;transition:color .2s;text-transform:uppercase;}
+.nav-links a:hover{color:var(--accent);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.pulse-badge{display:flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.68rem;color:var(--accent3);border:1px solid rgba(0,245,160,.2);padding:.28rem .75rem;border-radius:100px;white-space:nowrap;}
+.pulse-dot{width:6px;height:6px;background:var(--accent3);border-radius:50%;flex-shrink:0;animation:pulse-a 2s infinite;}
+@keyframes pulse-a{0%,100%{box-shadow:0 0 0 0 rgba(0,245,160,.5);}50%{box-shadow:0 0 0 5px rgba(0,245,160,0);}}
+.nav-cta{background:var(--accent);color:var(--bg);padding:.44rem 1rem;border-radius:4px;font-size:.75rem;font-weight:600;text-decoration:none;font-family:var(--fm);transition:box-shadow .2s,transform .1s;}
+.nav-cta:hover{box-shadow:var(--glow);transform:translateY(-1px);}
+section{position:relative;z-index:2;}
+.wrap{max-width:1180px;margin:0 auto;padding:6rem 3rem;}
+.sec-tag{font-family:var(--fm);font-size:.68rem;color:var(--accent);letter-spacing:.22em;text-transform:uppercase;margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem;}
+.sec-tag::before{content:'';width:20px;height:1px;background:var(--accent);}
+.sec-title{font-family:var(--fh);font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;}
+.sec-sub{color:var(--muted);max-width:480px;margin-top:.6rem;font-size:.88rem;line-height:1.75;}
+.sec-hdr{margin-bottom:3.5rem;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.vis{opacity:1;transform:none;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 3rem;padding-top:86px;}
+.hero-in{max-width:1180px;margin:0 auto;width:100%;}
+.terminal{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.15rem;font-family:var(--fm);font-size:.76rem;display:inline-block;position:relative;margin-bottom:1.75rem;opacity:0;animation:fu .7s .1s forwards;}
+.term-bar{display:flex;gap:.3rem;margin-bottom:.55rem;}
+.td{width:10px;height:10px;border-radius:50%;}
+.t-g{color:var(--accent3);}
+.t-b{color:var(--accent);}
+.t-m{color:var(--muted);}
+.blink{animation:blink 1s step-end infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.hero-ey{font-family:var(--fm);font-size:.7rem;color:var(--accent);letter-spacing:.22em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem;opacity:0;animation:fu .7s .2s forwards;}
+.hero-ey::before{content:'';width:28px;height:1px;background:var(--accent);}
+.hero-name{font-family:var(--fh);font-size:clamp(3.8rem,9vw,9.5rem);font-weight:800;line-height:.9;letter-spacing:-.05em;margin-bottom:1.5rem;opacity:0;animation:fu .7s .35s forwards;}
+.hero-name .l1{display:block;color:var(--text);}
+.hero-name .l2{display:block;color:transparent;-webkit-text-stroke:1.5px var(--accent);}
+.hero-tag{font-size:clamp(.9rem,1.8vw,1.18rem);color:var(--muted);max-width:620px;line-height:1.82;margin-bottom:2rem;font-weight:300;opacity:0;animation:fu .7s .5s forwards;}
+.hero-tag strong{color:var(--text);font-weight:500;}
+.hero-acts{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center;opacity:0;animation:fu .7s .65s forwards;}
+.btn-p{background:var(--accent);color:var(--bg);padding:.72rem 1.65rem;border-radius:5px;font-weight:600;text-decoration:none;font-family:var(--fm);font-size:.8rem;transition:box-shadow .2s,transform .15s;display:inline-flex;align-items:center;gap:.45rem;}
+.btn-p:hover{box-shadow:var(--glow);transform:translateY(-2px);}
+.btn-o{border:1px solid var(--border);color:var(--text);padding:.72rem 1.65rem;border-radius:5px;text-decoration:none;font-family:var(--fm);font-size:.8rem;transition:border-color .2s,color .2s;display:inline-flex;align-items:center;gap:.45rem;}
+.btn-o:hover{border-color:var(--accent);color:var(--accent);}
+.hero-stats{display:flex;gap:3rem;margin-top:3.5rem;padding-top:2.75rem;border-top:1px solid var(--border);opacity:0;animation:fu .7s .8s forwards;flex-wrap:wrap;}
+.stat{display:flex;flex-direction:column;gap:.15rem;}
+.stat-n{font-family:var(--fh);font-size:2.6rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-l{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:.15rem;}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--muted);font-family:var(--fm);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;animation:bob 3s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-7px);}}
+.sc-line{width:1px;height:34px;background:linear-gradient(to bottom,var(--accent),transparent);}
+@keyframes fu{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+
+/* ABOUT */
+#about{background:var(--bg2);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-text p{color:var(--muted);line-height:1.85;margin-bottom:1rem;font-size:.9rem;}
+.about-text p strong{color:var(--text);}
+.hl-list{display:flex;flex-direction:column;gap:.6rem;margin-top:1.75rem;}
+.hl{display:flex;align-items:flex-start;gap:.8rem;padding:.85rem 1rem;background:var(--surface);border-radius:7px;border-left:2px solid var(--accent);font-size:.83rem;line-height:1.5;color:var(--muted);}
+.hl-ic{font-size:.95rem;flex-shrink:0;}
+.hl strong{color:var(--text);}
+.about-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;position:relative;overflow:hidden;}
+.about-card::before{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:radial-gradient(circle,rgba(0,200,248,.1),transparent 70%);pointer-events:none;}
+.av{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:1.5rem;font-weight:800;color:var(--bg);margin-bottom:1.5rem;}
+.ir{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.82rem;}
+.ir:last-child{border-bottom:none;}
+.il{color:var(--muted);font-family:var(--fm);font-size:.68rem;letter-spacing:.04em;}
+.iv{color:var(--text);}
+.iv.green{color:var(--accent3);}
+.iv.blue{color:var(--accent);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:1.35rem;}
+.sk-cat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.7rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;}
+.sk-cat:hover{border-color:rgba(0,200,248,.38);transform:translateY(-4px);box-shadow:0 20px 44px rgba(0,0,0,.45);}
+.sk-cat::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,200,248,.025),transparent 60%);pointer-events:none;}
+.cat-hd{display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.cat-ic{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.ic-ai{background:rgba(0,200,248,.15);}
+.ic-emb{background:rgba(124,92,191,.15);}
+.ic-data{background:rgba(0,245,160,.15);}
+.ic-inf{background:rgba(245,166,35,.15);}
+.cat-nm{font-family:var(--fh);font-size:.9rem;font-weight:700;}
+.cat-ct{margin-left:auto;font-family:var(--fm);font-size:.65rem;color:var(--muted);}
+.sk-list{display:flex;flex-direction:column;gap:.52rem;}
+.sk-item{display:flex;align-items:center;gap:.65rem;}
+.sk-nm{font-size:.8rem;flex:1;color:var(--text);}
+.sk-tr{flex:2;background:rgba(255,255,255,.05);border-radius:100px;height:3px;overflow:hidden;}
+.sk-b{height:100%;border-radius:100px;transition:width 1.6s cubic-bezier(.16,1,.3,1);width:0;}
+.bc{background:linear-gradient(90deg,var(--accent),#0070f3);}
+.bp{background:linear-gradient(90deg,var(--accent2),#a855f7);}
+.bg{background:linear-gradient(90deg,var(--accent3),var(--accent));}
+.ba{background:linear-gradient(90deg,var(--warn),#f59e0b);}
+.sk-pct{font-family:var(--fm);font-size:.63rem;color:var(--muted);width:24px;text-align:right;}
+.k-rings{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.9rem;margin-top:2.25rem;}
+.k-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.35rem 1rem;text-align:center;}
+.k-ring{width:76px;height:76px;margin:0 auto .7rem;position:relative;}
+.k-ring svg{transform:rotate(-90deg);}
+.k-bg{fill:none;stroke:rgba(255,255,255,.05);stroke-width:6;}
+.k-fill{fill:none;stroke-width:6;stroke-linecap:round;}
+.k-lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:1rem;font-weight:800;}
+.k-nm{font-size:.72rem;color:var(--muted);font-family:var(--fm);letter-spacing:.03em;}
+
+/* EXPERIENCE */
+#experience{background:var(--bg2);}
+.timeline{position:relative;padding-left:1.75rem;}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),rgba(0,200,248,0) 90%);}
+.tl-item{position:relative;padding:0 0 3rem 2.4rem;}
+.tl-dot{position:absolute;left:-1.75rem;top:.3rem;width:13px;height:13px;border-radius:50%;border:2.5px solid var(--bg2);}
+.dot-g{background:var(--accent3);box-shadow:0 0 10px var(--accent3);}
+.dot-c{background:var(--accent);box-shadow:0 0 10px var(--accent);}
+.dot-p{background:var(--accent2);box-shadow:0 0 10px var(--accent2);}
+.tl-date{font-family:var(--fm);font-size:.68rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.38rem;}
+.tl-role{font-family:var(--fh);font-size:1.18rem;font-weight:700;margin-bottom:.2rem;}
+.tl-co{color:var(--muted);font-size:.82rem;margin-bottom:.88rem;display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;}
+.badge{display:inline-block;padding:.16rem .58rem;border-radius:4px;font-family:var(--fm);font-size:.63rem;letter-spacing:.04em;}
+.bc2{background:rgba(0,200,248,.1);color:var(--accent);border:1px solid rgba(0,200,248,.2);}
+.bg2{background:rgba(0,245,160,.08);color:var(--accent3);border:1px solid rgba(0,245,160,.2);}
+.bp2{background:rgba(124,92,191,.1);color:#b89cf7;border:1px solid rgba(124,92,191,.25);}
+.bw2{background:rgba(245,166,35,.1);color:var(--warn);border:1px solid rgba(245,166,35,.2);}
+.tl-bul{list-style:none;display:flex;flex-direction:column;gap:.48rem;}
+.tl-bul li{font-size:.845rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.65;}
+.tl-bul li::before{content:'▹';position:absolute;left:0;color:var(--accent);}
+.tl-bul li strong{color:var(--text);}
+.tags{display:flex;flex-wrap:wrap;gap:.38rem;margin-top:.9rem;}
+.tag{font-family:var(--fm);font-size:.64rem;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid var(--border);padding:.18rem .58rem;border-radius:4px;}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.35rem;}
+.proj-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative;}
+.proj-card:hover{border-color:rgba(0,200,248,.4);transform:translateY(-5px);box-shadow:0 24px 50px rgba(0,0,0,.5);}
+.proj-top{padding:1.5rem 1.5rem 0;}
+.proj-cat{font-family:var(--fm);font-size:.62rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.55rem;}
+.proj-title{font-family:var(--fh);font-size:1.05rem;font-weight:700;margin-bottom:.55rem;line-height:1.25;}
+.proj-desc{color:var(--muted);font-size:.83rem;line-height:1.7;margin-bottom:.9rem;}
+.proj-hl{list-style:none;display:flex;flex-direction:column;gap:.38rem;margin-bottom:1.1rem;}
+.proj-hl li{font-size:.78rem;color:var(--muted);padding-left:.85rem;position:relative;line-height:1.55;}
+.proj-hl li::before{content:'→';position:absolute;left:0;color:var(--accent3);font-size:.68rem;}
+.proj-hl li strong{color:var(--text);}
+.proj-bot{padding:.8rem 1.5rem;border-top:1px solid var(--border);background:rgba(0,0,0,.2);}
+.proj-stack{display:flex;flex-wrap:wrap;gap:.32rem;}
+.proj-tag{font-family:var(--fm);font-size:.62rem;padding:.16rem .52rem;border-radius:4px;background:rgba(0,200,248,.07);color:var(--accent);border:1px solid rgba(0,200,248,.15);}
+.feat-badge{position:absolute;top:.85rem;right:.85rem;background:var(--warn);color:var(--bg);font-family:var(--fm);font-size:.58rem;padding:.18rem .5rem;border-radius:4px;font-weight:600;}
+
+/* RESEARCH */
+#research{background:var(--bg2);}
+.patent-card{background:linear-gradient(135deg,var(--surface),rgba(124,92,191,.07));border:1px solid rgba(124,92,191,.28);border-radius:16px;padding:2.25rem;position:relative;overflow:hidden;}
+.patent-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(124,92,191,.14),transparent 70%);pointer-events:none;}
+.pat-ic{font-size:2.2rem;margin-bottom:.9rem;}
+.pat-title{font-family:var(--fh);font-size:1.4rem;font-weight:800;margin-bottom:.4rem;}
+.pat-org{color:var(--muted);font-size:.84rem;margin-bottom:1.25rem;}
+.pat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.9rem;margin-top:1.4rem;}
+.pat-item{background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:8px;padding:.95rem 1rem;}
+.pat-it{font-family:var(--fm);font-size:.67rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem;}
+.pat-tx{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.pat-tx strong{color:var(--text);}
+.big-n{font-family:var(--fh);font-size:1.8rem;font-weight:800;color:#b89cf7;line-height:1;}
+.wins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1.1rem;}
+.win-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.4rem;transition:border-color .3s,transform .3s;}
+.win-card:hover{border-color:rgba(0,200,248,.38);transform:translateY(-3px);}
+.win-n{font-family:var(--fh);font-size:2.1rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:.4rem;}
+.win-n.gn{color:var(--accent3);}
+.win-n.pu{color:#b89cf7;}
+.win-n.am{color:var(--warn);}
+.win-d{color:var(--muted);font-size:.83rem;line-height:1.6;}
+.win-d strong{color:var(--text);}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.25rem;}
+.edu-sec h3{font-family:var(--fh);font-size:1.2rem;font-weight:700;margin-bottom:1.1rem;display:flex;align-items:center;gap:.55rem;}
+.edu-sec h3::after{content:'';flex:1;height:1px;background:var(--border);}
+.edu-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.15rem;margin-bottom:.9rem;position:relative;overflow:hidden;transition:border-color .25s;}
+.edu-item:hover{border-color:rgba(0,200,248,.32);}
+.edu-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);}
+.edu-item.p::before{background:var(--accent2);}
+.edu-yr{font-family:var(--fm);font-size:.65rem;color:var(--accent);letter-spacing:.08em;margin-bottom:.28rem;}
+.edu-deg{font-family:var(--fh);font-size:.9rem;font-weight:700;margin-bottom:.18rem;line-height:1.3;}
+.edu-sch{color:var(--muted);font-size:.78rem;}
+.cert-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.1rem;margin-bottom:.85rem;display:flex;align-items:center;gap:.9rem;transition:border-color .25s;}
+.cert-item:hover{border-color:rgba(0,245,160,.3);}
+.cert-ic{width:40px;height:40px;border-radius:7px;background:rgba(0,245,160,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.cert-nm{font-family:var(--fh);font-size:.88rem;font-weight:700;margin-bottom:.12rem;}
+.cert-iss{color:var(--muted);font-size:.76rem;}
+.cert-yr{font-family:var(--fm);font-size:.65rem;color:var(--accent3);margin-left:auto;white-space:nowrap;flex-shrink:0;}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-links{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem;}
+.contact-link{display:flex;align-items:center;gap:.85rem;padding:.9rem 1.1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text);transition:border-color .2s,transform .2s;}
+.contact-link:hover{border-color:var(--accent);transform:translateX(4px);}
+.cl-ic{width:34px;height:34px;border-radius:6px;background:rgba(0,200,248,.1);display:flex;align-items:center;justify-content:center;font-size:.88rem;flex-shrink:0;}
+.cl-lbl{font-family:var(--fm);font-size:.67rem;color:var(--muted);letter-spacing:.04em;}
+.cl-val{font-size:.85rem;color:var(--text);}
+.contact-right{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.85rem;}
+.fg{margin-bottom:1.15rem;}
+.fg label{display:block;font-family:var(--fm);font-size:.68rem;color:var(--muted);letter-spacing:.08em;margin-bottom:.4rem;text-transform:uppercase;}
+.fg input,.fg textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:.7rem .95rem;color:var(--text);font-family:var(--fb);font-size:.85rem;outline:none;transition:border-color .2s;}
+.fg input:focus,.fg textarea:focus{border-color:var(--accent);}
+.fg textarea{resize:vertical;min-height:95px;}
+.form-btn{width:100%;background:var(--accent);color:var(--bg);padding:.8rem;border-radius:5px;border:none;font-family:var(--fm);font-size:.82rem;font-weight:700;cursor:none;transition:box-shadow .2s,transform .15s;}
+.form-btn:hover{box-shadow:var(--glow);transform:translateY(-2px);}
+footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--bg);flex-wrap:wrap;gap:1rem;}
+.fc{font-family:var(--fm);font-size:.7rem;color:var(--muted);}
+.fc span{color:var(--accent);}
+.fl{display:flex;gap:1.25rem;}
+.fl a{font-family:var(--fm);font-size:.7rem;color:var(--muted);text-decoration:none;transition:color .2s;}
+.fl a:hover{color:var(--accent);}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .wrap{padding:4rem 1.5rem;}
+  #hero{padding:0 1.5rem;padding-top:76px;}
+  .about-grid,.contact-wrap,.edu-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:1.75rem;}
+}
+@media(max-width:600px){.proj-grid,.skills-grid,.wins-grid{grid-template-columns:1fr;}}
+</style>
 </head>
-<body class="antialiased">
+<body>
 
-    <header class="fixed w-full z-50 glass border-b border-white/5">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-extrabold tracking-tighter text-blue-400 italic">SIDDHARTH.AI</h1>
-            <nav class="hidden md:block">
-                <ul class="flex space-x-8 text-sm font-medium">
-                    <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
-                    <li><a href="#experience" class="hover:text-blue-400 transition">Experience</a></li>
-                    <li><a href="#hardware" class="hover:text-blue-400 transition">Embedded</a></li>
-                    <li><a href="#projects" class="hover:text-blue-400 transition">Projects</a></li>
-                </ul>
-            </nav>
-            <a href="mailto:Siddharth.m.gajjar@gmail.com" class="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-full text-xs font-bold transition shadow-lg shadow-blue-500/20">CONTACT</a>
-        </div>
-    </header>
+<div id="cur"></div>
+<div id="cur-r"></div>
+<canvas id="canvas-bg"></canvas>
 
-    <main>
-        <section class="hero-gradient min-h-screen flex items-center justify-center text-center px-4 pt-20">
-            <div class="max-w-4xl">
-                <div class="reveal inline-block px-4 py-1 mb-6 glass rounded-full text-blue-400 text-xs font-bold tracking-widest uppercase">
-                    Available for Full-Time Roles | Canada
-                </div>
-                <h2 class="reveal text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-                    Bridging the gap between <br><span class="text-gradient">Hardware & Intelligence</span>
-                </h2>
-                <p class="reveal text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto" style="transition-delay: 200ms;">
-                    Dynamic Developer specializing in **Computer Vision (YOLO)**, **Machine Learning Pipelines**, and **Embedded IoT Systems**. 
-                    Expert at deploying AI on the edge.
-                </p>
-                <div class="reveal flex flex-wrap justify-center gap-4" style="transition-delay: 400ms;">
-                    <a href="#experience" class="bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-blue-400 transition">Experience</a>
-                    <a href="https://linkedin.com/in/Siddharth-gajjar" target="_blank" class="glass px-8 py-3 rounded-full font-bold hover:bg-white/10 transition">LinkedIn</a>
-                </div>
-            </div>
-        </section>
+<nav>
+  <a href="#hero" class="logo">Siddharth<em>.AI</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="pulse-badge"><span class="pulse-dot"></span>Open to Work</div>
+    <a href="mailto:Siddharth.m.gajjar@gmail.com" class="nav-cta">Hire Me</a>
+  </div>
+</nav>
 
-        <section id="about" class="py-24 container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <h3 class="text-3xl font-bold mb-6">Innovative <span class="text-blue-500">Problem Solver</span></h3>
-                    <p class="text-gray-300 leading-relaxed text-lg mb-6">
-                        With a double Post-Graduation in **AI & Data Analytics** and **Technology Management**, I specialize in building systems that don't just process data, but act on it. 
-                    </p>
-                    <p class="text-gray-400 mb-8">
-                        Whether it’s training a YOLO model for agricultural detection or architecting a patented communication protocol for embedded networks, I focus on scalable, hardware-independent software solutions.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="glass p-5 rounded-2xl border-l-4 border-blue-500">
-                            <span class="block text-sm text-gray-400 uppercase font-bold">Latest Tech</span>
-                            <span class="text-white font-medium">Docker, YOLO, TensorFlow</span>
-                        </div>
-                        <div class="glass p-5 rounded-2xl border-l-4 border-purple-500">
-                            <span class="block text-sm text-gray-400 uppercase font-bold">Innovation</span>
-                            <span class="text-white font-medium">Patent in Submission</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="reveal relative">
-                    <div class="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full"></div>
-                    <div class="relative grid grid-cols-2 gap-4">
-                        <div class="p-6 glass rounded-3xl animate-float">
-                            <h4 class="text-blue-400 font-bold mb-2">AI & ML</h4>
-                            <p class="text-xs text-gray-400">Computer Vision, LSTM, Predictive Modeling</p>
-                        </div>
-                        <div class="p-6 glass rounded-3xl animate-float" style="animation-delay: 1s;">
-                            <h4 class="text-purple-400 font-bold mb-2">Embedded</h4>
-                            <p class="text-xs text-gray-400">RTOS, ESP32, STM32, Firmware C++</p>
-                        </div>
-                        <div class="p-6 glass rounded-3xl animate-float" style="animation-delay: 2s;">
-                            <h4 class="text-green-400 font-bold mb-2">Infrastructure</h4>
-                            <p class="text-xs text-gray-400">Docker, MySQL, Bash, Git</p>
-                        </div>
-                        <div class="p-6 glass rounded-3xl animate-float" style="animation-delay: 3.5s;">
-                            <h4 class="text-pink-400 font-bold mb-2">Deployment</h4>
-                            <p class="text-xs text-gray-400">Cloud (Render), Linux Systems</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- HERO -->
+<section id="hero">
+<div class="hero-in">
+  <div class="terminal">
+    <div class="term-bar"><div class="td" style="background:#ff5f57"></div><div class="td" style="background:#febc2e"></div><div class="td" style="background:#28c840"></div></div>
+    <span class="t-g">~</span> <span class="t-b">whoami</span><br>
+    <span class="t-m">&nbsp;&nbsp;→ AI/ML Engineer · Embedded Systems Founder · Patent Co-Author</span><br>
+    <span class="t-g">~</span> <span class="t-b">location</span><br>
+    <span class="t-m">&nbsp;&nbsp;→ Regina, Saskatchewan 🇨🇦 · Open Work Permit · Open to Relocation</span><br>
+    <span class="t-g">~</span> <span class="t-b">status</span> <span class="t-b">--now</span><span class="blink">▮</span>
+  </div>
+  <div class="hero-ey">AI &amp; Machine Learning Engineer</div>
+  <h1 class="hero-name"><span class="l1">Siddharth</span><span class="l2">Gajjar.</span></h1>
+  <p class="hero-tag">Bridging <strong>hardware intelligence</strong> and <strong>production AI</strong> — 8+ years shipping computer vision pipelines, embedded IoT systems, and ML deployments from dataset to cloud. <strong>Patent-pending researcher</strong> at Saskatchewan Polytechnic.</p>
+  <div class="hero-acts">
+    <a href="#projects" class="btn-p">View Projects ↓</a>
+    <a href="#experience" class="btn-o">Experience</a>
+    <a href="mailto:Siddharth.m.gajjar@gmail.com" class="btn-o">✉ Contact Me</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-n">8+</span><span class="stat-l">Years Experience</span></div>
+    <div class="stat"><span class="stat-n">80%</span><span class="stat-l">Inventory Time Saved</span></div>
+    <div class="stat"><span class="stat-n">1</span><span class="stat-l">Patent Pending</span></div>
+    <div class="stat"><span class="stat-n">50K+</span><span class="stat-l">Records Processed</span></div>
+    <div class="stat"><span class="stat-n">2</span><span class="stat-l">Post-Grad Diplomas</span></div>
+  </div>
+</div>
+<div class="hero-scroll"><div class="sc-line"></div><span>Scroll</span></div>
+</section>
 
-        <section id="experience" class="py-24 bg-slate-900/50">
-            <div class="container mx-auto px-6">
-                <h3 class="text-3xl font-bold mb-16 text-center">Professional Journey</h3>
-                <div class="max-w-4xl mx-auto space-y-12">
-                    
-                    <div class="reveal relative pl-8 border-l-2 border-blue-600">
-                        <div class="absolute w-4 h-4 bg-blue-600 rounded-full -left-[9px] top-0 shadow-[0_0_15px_#2563eb]"></div>
-                        <span class="text-blue-400 font-mono text-sm uppercase tracking-widest">Oct 2025 - Present</span>
-                        <h4 class="text-2xl font-bold text-white mt-1">AI & Machine Learning Developer</h4>
-                        <p class="text-gray-400 mb-4 font-medium italic">mPowered Technology Solutions | Regina, SK</p>
-                        <ul class="text-gray-300 space-y-2 text-sm leading-relaxed">
-                            <li>• Architecting Computer Vision systems utilizing **YOLO v8/v10** for high-accuracy object detection.</li>
-                            <li>• Containerizing ML applications using **Docker** to ensure reproducible inference environments.</li>
-                            <li>• Implementing end-to-end data pipelines: from cleaning raw datasets to model evaluation.</li>
-                        </ul>
-                    </div>
+<!-- ABOUT -->
+<section id="about">
+<div class="wrap">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="sec-hdr">
+        <div class="sec-tag">About Me</div>
+        <h2 class="sec-title">Hardware meets<br>Intelligence.</h2>
+        <p class="sec-sub">The engineer who codes firmware and trains the model.</p>
+      </div>
+      <p>I'm a dual-certified AI and Technology Management engineer with <strong>8+ years</strong> of combined experience spanning computer vision, embedded IoT hardware, and full-stack ML deployment.</p>
+      <p>What sets me apart: I <strong>founded and operated an IoT engineering company</strong> (I Technology, India) for 7 years, co-authored a <strong>patent-pending communication protocol</strong> at Saskatchewan Polytechnic's DICE research centre, and shipped production YOLO pipelines cutting manual work by 80%.</p>
+      <p>I don't just build models — I build the systems that run them, from Eagle PCB design and RTOS firmware to Docker containers and cloud-deployed FastAPI endpoints.</p>
+      <div class="hl-list">
+        <div class="hl"><span class="hl-ic">🤖</span><span><strong>Computer Vision specialist</strong> — YOLO v8/v10 in live production environments</span></div>
+        <div class="hl"><span class="hl-ic">🔬</span><span><strong>Patent co-author</strong> — Top 5% of applied research at Saskatchewan Polytechnic</span></div>
+        <div class="hl"><span class="hl-ic">⚙️</span><span><strong>7-year IoT founder</strong> — ESP32, STM32, Eagle PCB, FreeRTOS</span></div>
+        <div class="hl"><span class="hl-ic">🍁</span><span><strong>Open work permit</strong> — authorized full-time in Canada, open to relocation</span></div>
+      </div>
+    </div>
+    <div class="about-card reveal">
+      <div class="av">SG</div>
+      <div class="ir"><span class="il">Status</span><span class="iv green">● Available Immediately</span></div>
+      <div class="ir"><span class="il">Location</span><span class="iv">Regina, SK, Canada</span></div>
+      <div class="ir"><span class="il">Work Auth</span><span class="iv blue">Open Work Permit 🇨🇦</span></div>
+      <div class="ir"><span class="il">Email</span><span class="iv" style="font-size:.78rem">Siddharth.m.gajjar@gmail.com</span></div>
+      <div class="ir"><span class="il">Phone</span><span class="iv">+1 306 510 5025</span></div>
+      <div class="ir"><span class="il">Primary Skill</span><span class="iv">AI / ML Engineering</span></div>
+      <div class="ir"><span class="il">Also Expert In</span><span class="iv">Embedded Systems · IoT</span></div>
+      <div class="ir"><span class="il">Research</span><span class="iv blue">Patent Pending — DICE 2025</span></div>
+      <div class="ir"><span class="il">Education</span><span class="iv">2× Post-Grad Diploma 🇨🇦</span></div>
+      <div class="ir"><span class="il">Relocation</span><span class="iv green">Yes — Open</span></div>
+    </div>
+  </div>
+</div>
+</section>
 
-                    <div class="reveal relative pl-8 border-l-2 border-slate-700">
-                        <div class="absolute w-4 h-4 bg-slate-700 rounded-full -left-[9px] top-0"></div>
-                        <span class="text-gray-500 font-mono text-sm">Apr 2025 - July 2025</span>
-                        <h4 class="text-2xl font-bold text-white mt-1">Research Assistant</h4>
-                        <p class="text-gray-400 mb-4 font-medium italic">Digital Integration Centre of Excellence (DICE)</p>
-                        <p class="text-sm text-gray-300">Co-authored a groundbreaking communication protocol for embedded systems (Patent Pending). Focused on MAVLink-based communication for UAV telemetry using Python.</p>
-                    </div>
+<!-- SKILLS -->
+<section id="skills">
+<div class="wrap">
+  <div class="sec-hdr reveal">
+    <div class="sec-tag">Technical Skills</div>
+    <h2 class="sec-title">The Full Stack<br>of Intelligence.</h2>
+    <p class="sec-sub">From bare-metal firmware to cloud-deployed ML — every layer, classified by proficiency.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="sk-cat reveal">
+      <div class="cat-hd"><div class="cat-ic ic-ai">🧠</div><span class="cat-nm">AI &amp; Machine Learning</span><span class="cat-ct">8 skills</span></div>
+      <div class="sk-list">
+        <div class="sk-item"><span class="sk-nm">YOLO Object Detection (v8/v10)</span><div class="sk-tr"><div class="sk-b bc" data-w="93"></div></div><span class="sk-pct">93</span></div>
+        <div class="sk-item"><span class="sk-nm">Computer Vision / OpenCV</span><div class="sk-tr"><div class="sk-b bc" data-w="90"></div></div><span class="sk-pct">90</span></div>
+        <div class="sk-item"><span class="sk-nm">Scikit-learn</span><div class="sk-tr"><div class="sk-b bc" data-w="88"></div></div><span class="sk-pct">88</span></div>
+        <div class="sk-item"><span class="sk-nm">Feature Engineering</span><div class="sk-tr"><div class="sk-b bc" data-w="85"></div></div><span class="sk-pct">85</span></div>
+        <div class="sk-item"><span class="sk-nm">TensorFlow</span><div class="sk-tr"><div class="sk-b bc" data-w="78"></div></div><span class="sk-pct">78</span></div>
+        <div class="sk-item"><span class="sk-nm">PyTorch</span><div class="sk-tr"><div class="sk-b bc" data-w="72"></div></div><span class="sk-pct">72</span></div>
+        <div class="sk-item"><span class="sk-nm">Model Evaluation &amp; Deployment</span><div class="sk-tr"><div class="sk-b bc" data-w="88"></div></div><span class="sk-pct">88</span></div>
+        <div class="sk-item"><span class="sk-nm">Predictive Modelling</span><div class="sk-tr"><div class="sk-b bc" data-w="86"></div></div><span class="sk-pct">86</span></div>
+      </div>
+    </div>
+    <div class="sk-cat reveal">
+      <div class="cat-hd"><div class="cat-ic ic-emb">⚙️</div><span class="cat-nm">Embedded &amp; IoT Systems</span><span class="cat-ct">9 skills</span></div>
+      <div class="sk-list">
+        <div class="sk-item"><span class="sk-nm">ESP32 / Arduino</span><div class="sk-tr"><div class="sk-b bp" data-w="95"></div></div><span class="sk-pct">95</span></div>
+        <div class="sk-item"><span class="sk-nm">Embedded C / C++</span><div class="sk-tr"><div class="sk-b bp" data-w="93"></div></div><span class="sk-pct">93</span></div>
+        <div class="sk-item"><span class="sk-nm">FreeRTOS / RTOS</span><div class="sk-tr"><div class="sk-b bp" data-w="88"></div></div><span class="sk-pct">88</span></div>
+        <div class="sk-item"><span class="sk-nm">Eagle PCB Design</span><div class="sk-tr"><div class="sk-b bp" data-w="85"></div></div><span class="sk-pct">85</span></div>
+        <div class="sk-item"><span class="sk-nm">STM32 / ARM Cortex</span><div class="sk-tr"><div class="sk-b bp" data-w="82"></div></div><span class="sk-pct">82</span></div>
+        <div class="sk-item"><span class="sk-nm">SPI / I2C / UART / LoRa</span><div class="sk-tr"><div class="sk-b bp" data-w="90"></div></div><span class="sk-pct">90</span></div>
+        <div class="sk-item"><span class="sk-nm">RS485 / MODBUS</span><div class="sk-tr"><div class="sk-b bp" data-w="87"></div></div><span class="sk-pct">87</span></div>
+        <div class="sk-item"><span class="sk-nm">Raspberry Pi</span><div class="sk-tr"><div class="sk-b bp" data-w="88"></div></div><span class="sk-pct">88</span></div>
+        <div class="sk-item"><span class="sk-nm">MAVLink / UAV Telemetry</span><div class="sk-tr"><div class="sk-b bp" data-w="75"></div></div><span class="sk-pct">75</span></div>
+      </div>
+    </div>
+    <div class="sk-cat reveal">
+      <div class="cat-hd"><div class="cat-ic ic-data">📊</div><span class="cat-nm">Data &amp; Analytics</span><span class="cat-ct">7 skills</span></div>
+      <div class="sk-list">
+        <div class="sk-item"><span class="sk-nm">Python</span><div class="sk-tr"><div class="sk-b bg" data-w="95"></div></div><span class="sk-pct">95</span></div>
+        <div class="sk-item"><span class="sk-nm">Pandas / NumPy</span><div class="sk-tr"><div class="sk-b bg" data-w="92"></div></div><span class="sk-pct">92</span></div>
+        <div class="sk-item"><span class="sk-nm">SQL / MySQL / MSSQL</span><div class="sk-tr"><div class="sk-b bg" data-w="88"></div></div><span class="sk-pct">88</span></div>
+        <div class="sk-item"><span class="sk-nm">Exploratory Data Analysis</span><div class="sk-tr"><div class="sk-b bg" data-w="90"></div></div><span class="sk-pct">90</span></div>
+        <div class="sk-item"><span class="sk-nm">Power BI</span><div class="sk-tr"><div class="sk-b bg" data-w="78"></div></div><span class="sk-pct">78</span></div>
+        <div class="sk-item"><span class="sk-nm">Statistical / Regression Analysis</span><div class="sk-tr"><div class="sk-b bg" data-w="84"></div></div><span class="sk-pct">84</span></div>
+        <div class="sk-item"><span class="sk-nm">Excel / Reporting</span><div class="sk-tr"><div class="sk-b bg" data-w="80"></div></div><span class="sk-pct">80</span></div>
+      </div>
+    </div>
+    <div class="sk-cat reveal">
+      <div class="cat-hd"><div class="cat-ic ic-inf">🐳</div><span class="cat-nm">Infrastructure &amp; Backend</span><span class="cat-ct">7 skills</span></div>
+      <div class="sk-list">
+        <div class="sk-item"><span class="sk-nm">Docker / Containerization</span><div class="sk-tr"><div class="sk-b ba" data-w="90"></div></div><span class="sk-pct">90</span></div>
+        <div class="sk-item"><span class="sk-nm">FastAPI</span><div class="sk-tr"><div class="sk-b ba" data-w="88"></div></div><span class="sk-pct">88</span></div>
+        <div class="sk-item"><span class="sk-nm">Linux / Bash Scripting</span><div class="sk-tr"><div class="sk-b ba" data-w="86"></div></div><span class="sk-pct">86</span></div>
+        <div class="sk-item"><span class="sk-nm">Git / GitHub</span><div class="sk-tr"><div class="sk-b ba" data-w="88"></div></div><span class="sk-pct">88</span></div>
+        <div class="sk-item"><span class="sk-nm">Render (Cloud Deployment)</span><div class="sk-tr"><div class="sk-b ba" data-w="82"></div></div><span class="sk-pct">82</span></div>
+        <div class="sk-item"><span class="sk-nm">Streamlit</span><div class="sk-tr"><div class="sk-b ba" data-w="80"></div></div><span class="sk-pct">80</span></div>
+        <div class="sk-item"><span class="sk-nm">Kali Linux / Pen Testing</span><div class="sk-tr"><div class="sk-b ba" data-w="72"></div></div><span class="sk-pct">72</span></div>
+      </div>
+    </div>
+  </div>
 
-                    <div id="hardware" class="reveal relative pl-8 border-l-2 border-slate-700">
-                        <div class="absolute w-4 h-4 bg-slate-700 rounded-full -left-[9px] top-0"></div>
-                        <span class="text-gray-500 font-mono text-sm">Dec 2016 - Dec 2022</span>
-                        <h4 class="text-2xl font-bold text-white mt-1">Embedded Product Developer</h4>
-                        <p class="text-gray-400 mb-4 font-medium italic">I Technology | India</p>
-                        <ul class="text-gray-300 space-y-2 text-sm">
-                            <li>• 7+ years leading hardware/software co-design for industrial IoT projects.</li>
-                            <li>• Mastered low-level debugging and **RTOS (FreeRTOS)** for ESP32 and ARM Cortex.</li>
-                            <li>• Designed the EOT Crane Monitoring System, integrating data logging with Power BI visualization.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- Knowledge Rings -->
+  <div class="k-rings">
+    <div class="k-card reveal"><div class="k-ring"><svg width="76" height="76" viewBox="0 0 76 76"><circle class="k-bg" cx="38" cy="38" r="31"/><circle class="k-fill" cx="38" cy="38" r="31" stroke="#00c8f8" stroke-dasharray="194.8" stroke-dashoffset="19.5"/></svg><div class="k-lbl" style="color:var(--accent)">90%</div></div><div class="k-nm">Computer Vision</div></div>
+    <div class="k-card reveal"><div class="k-ring"><svg width="76" height="76" viewBox="0 0 76 76"><circle class="k-bg" cx="38" cy="38" r="31"/><circle class="k-fill" cx="38" cy="38" r="31" stroke="#7c5cbf" stroke-dasharray="194.8" stroke-dashoffset="39"/></svg><div class="k-lbl" style="color:var(--accent2)">80%</div></div><div class="k-nm">Embedded / IoT</div></div>
+    <div class="k-card reveal"><div class="k-ring"><svg width="76" height="76" viewBox="0 0 76 76"><circle class="k-bg" cx="38" cy="38" r="31"/><circle class="k-fill" cx="38" cy="38" r="31" stroke="#00f5a0" stroke-dasharray="194.8" stroke-dashoffset="29.2"/></svg><div class="k-lbl" style="color:var(--accent3)">85%</div></div><div class="k-nm">Python / Data</div></div>
+    <div class="k-card reveal"><div class="k-ring"><svg width="76" height="76" viewBox="0 0 76 76"><circle class="k-bg" cx="38" cy="38" r="31"/><circle class="k-fill" cx="38" cy="38" r="31" stroke="#f5a623" stroke-dasharray="194.8" stroke-dashoffset="39"/></svg><div class="k-lbl" style="color:var(--warn)">80%</div></div><div class="k-nm">ML Pipelines</div></div>
+    <div class="k-card reveal"><div class="k-ring"><svg width="76" height="76" viewBox="0 0 76 76"><circle class="k-bg" cx="38" cy="38" r="31"/><circle class="k-fill" cx="38" cy="38" r="31" stroke="#00c8f8" stroke-dasharray="194.8" stroke-dashoffset="39"/></svg><div class="k-lbl" style="color:var(--accent)">80%</div></div><div class="k-nm">Docker / DevOps</div></div>
+    <div class="k-card reveal"><div class="k-ring"><svg width="76" height="76" viewBox="0 0 76 76"><circle class="k-bg" cx="38" cy="38" r="31"/><circle class="k-fill" cx="38" cy="38" r="31" stroke="#b89cf7" stroke-dasharray="194.8" stroke-dashoffset="58.4"/></svg><div class="k-lbl" style="color:#b89cf7">70%</div></div><div class="k-nm">PCB Design</div></div>
+  </div>
+</div>
+</section>
 
-        <section id="projects" class="py-24 container mx-auto px-6">
-            <h3 class="text-3xl font-bold mb-12">Featured Engineering <span class="text-blue-500">Labs</span></h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                
-                <div class="reveal glass rounded-3xl overflow-hidden group">
-                    <div class="h-48 bg-blue-900/20 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-xs font-bold tracking-tighter glass px-3 py-1 rounded-full uppercase">Predictive Analytics</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg mb-2">Housing Price Platform</h4>
-                        <p class="text-gray-400 text-xs mb-4">A complete regression-based platform deployed on Render, using multi-source feature engineering.</p>
-                        <div class="flex gap-2">
-                            <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20 font-bold">Python</span>
-                            <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20 font-bold">Scikit-Learn</span>
-                        </div>
-                    </div>
-                </div>
+<!-- EXPERIENCE -->
+<section id="experience">
+<div class="wrap">
+  <div class="sec-hdr reveal">
+    <div class="sec-tag">Professional Experience</div>
+    <h2 class="sec-title">The Journey<br>So Far.</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-dot dot-g"></div>
+      <div class="tl-date">OCT 2025 — PRESENT</div>
+      <div class="tl-role">AI &amp; Machine Learning Developer</div>
+      <div class="tl-co">mPowered Technology Solutions &middot; Regina, SK <span class="badge bg2">Current</span></div>
+      <ul class="tl-bul">
+        <li>Built production-grade <strong>YOLO object detection pipeline</strong> cutting manual image review time by ~75%, with automated inference, count logging, and structured reporting.</li>
+        <li>Engineered end-to-end ML pipelines — data cleaning → feature engineering → model training → evaluation — across datasets exceeding <strong>50,000+ records</strong>.</li>
+        <li>Designed MySQL schemas and optimized SQL queries for AI model outputs, enabling <strong>real-time analytics dashboards</strong>.</li>
+        <li>Containerized all ML applications with <strong>Docker</strong>, achieving zero-drift deployments across local, staging, and cloud environments.</li>
+        <li>Automated data processing and reporting workflows — eliminating approximately <strong>6 hours/week</strong> of manual effort.</li>
+      </ul>
+      <div class="tags"><span class="tag">YOLO v8/v10</span><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">MySQL</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">OpenCV</span></div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot dot-c"></div>
+      <div class="tl-date">APR 2025 — JUL 2025</div>
+      <div class="tl-role">Research Assistant &amp; Co-Author</div>
+      <div class="tl-co">DICE — Digital Integration Centre of Excellence, Saskatchewan Polytechnic &middot; Saskatoon, SK <span class="badge bp2">Patent</span></div>
+      <ul class="tl-bul">
+        <li>Co-designed a <strong>novel embedded communication protocol</strong> for IoT device networks — patent submission in progress, a recognition reserved for fewer than <strong>5% of applied research projects</strong>.</li>
+        <li>Led protocol architecture design, simulation, and end-to-end system validation; conducted <strong>penetration testing with Kali Linux</strong>.</li>
+        <li>Wrote Python simulation code modelling protocol behavior under edge-case and adversarial conditions — directly strengthening the patent's technical claims.</li>
+        <li>Directed literature reviews across <strong>40+ peer-reviewed sources</strong>, establishing methodology and differentiating from prior art.</li>
+      </ul>
+      <div class="tags"><span class="tag">Python</span><span class="tag">MAVLink</span><span class="tag">Kali Linux</span><span class="tag">IoT Protocols</span><span class="tag">Embedded Systems</span><span class="tag">Research</span></div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot dot-p"></div>
+      <div class="tl-date">APR 2016 — JUL 2023</div>
+      <div class="tl-role">Embedded Systems Developer &amp; Founder</div>
+      <div class="tl-co">I Technology &middot; India <span class="badge bw2">Founder · 7 Years</span></div>
+      <ul class="tl-bul">
+        <li><strong>Founded and operated</strong> an IoT engineering company — designed, prototyped, and deployed embedded hardware across industrial, agricultural, and infrastructure clients.</li>
+        <li><strong>EOT Crane Safety Monitor:</strong> Real-time sensor network reducing unplanned safety incidents and enabling predictive maintenance scheduling.</li>
+        <li><strong>AI-on-Chip Solar Cleaning Robot:</strong> Autonomous robot with embedded AI — eliminated manual cleaning and recovered <strong>10–15% lost solar energy output</strong>.</li>
+        <li><strong>Welding Machine Health Monitor:</strong> Flagged machine degradation <strong>48–72 hours before failure</strong>, reducing unplanned downtime.</li>
+        <li><strong>Water Quality Monitoring:</strong> IoT sensors with automated alerts replacing manual sampling cycles.</li>
+        <li>Managed full lifecycle across <strong>8+ production deployments</strong>: requirements → firmware → PCB design → hardware → site installation.</li>
+      </ul>
+      <div class="tags"><span class="tag">ESP32</span><span class="tag">STM32</span><span class="tag">FreeRTOS</span><span class="tag">Eagle PCB</span><span class="tag">C/C++</span><span class="tag">LoRa</span><span class="tag">MODBUS</span><span class="tag">Power BI</span></div>
+    </div>
+  </div>
+</div>
+</section>
 
-                <div class="reveal glass rounded-3xl overflow-hidden group" style="transition-delay: 150ms;">
-                    <div class="h-48 bg-purple-900/20 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-xs font-bold tracking-tighter glass px-3 py-1 rounded-full uppercase">Computer Vision</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg mb-2">Agri-Feature YOLO</h4>
-                        <p class="text-gray-400 text-xs mb-4">Advanced object detection model trained on agricultural datasets to identify crop health and features.</p>
-                        <div class="flex gap-2">
-                            <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-1 rounded border border-purple-500/20 font-bold">YOLO v10</span>
-                            <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-1 rounded border border-purple-500/20 font-bold">OpenCV</span>
-                        </div>
-                    </div>
-                </div>
+<!-- PROJECTS -->
+<section id="projects">
+<div class="wrap">
+  <div class="sec-hdr reveal">
+    <div class="sec-tag">Key Projects</div>
+    <h2 class="sec-title">Shipped &amp;<br>Production-Ready.</h2>
+    <p class="sec-sub">End-to-end systems — from dataset to deployment, firmware to cloud API.</p>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card reveal">
+      <div class="feat-badge">⭐ Featured</div>
+      <div class="proj-top">
+        <div class="proj-cat">Computer Vision · Production</div>
+        <div class="proj-title">Real-Time Object Detection &amp; Inventory Logger</div>
+        <div class="proj-desc">YOLO-based CV system that identifies, counts, and auto-logs inventory items to MySQL — live in production, cutting manual counting by 80%.</div>
+        <ul class="proj-hl">
+          <li><strong>80% reduction</strong> in manual inventory counting time</li>
+          <li>OpenCV preprocessing pipeline + full Docker containerization</li>
+          <li>Scalable to edge deployment on Raspberry Pi or ESP32-CAM</li>
+          <li>Real-time analytics via structured MySQL logging</li>
+        </ul>
+      </div>
+      <div class="proj-bot"><div class="proj-stack"><span class="proj-tag">YOLO v10</span><span class="proj-tag">OpenCV</span><span class="proj-tag">Python</span><span class="proj-tag">MySQL</span><span class="proj-tag">Docker</span></div></div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="feat-badge">⭐ Featured</div>
+      <div class="proj-top">
+        <div class="proj-cat">Full-Stack ML · Live API</div>
+        <div class="proj-title">Ontario Housing Price Prediction Platform</div>
+        <div class="proj-desc">Complete regression ML platform with live FastAPI endpoints deployed on Render — from government dataset ingestion to real-time price forecasting.</div>
+        <ul class="proj-hl">
+          <li>Trained on government + synthetic real estate datasets</li>
+          <li>Evaluated across <strong>MAE, RMSE, and R²</strong> metrics</li>
+          <li><strong>Zero-downtime CI/CD</strong> via GitHub → Render cloud</li>
+          <li>Fully modular, documented ML pipeline end-to-end</li>
+        </ul>
+      </div>
+      <div class="proj-bot"><div class="proj-stack"><span class="proj-tag">Python</span><span class="proj-tag">FastAPI</span><span class="proj-tag">Scikit-learn</span><span class="proj-tag">Render</span><span class="proj-tag">Pandas</span></div></div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-cat">Edge AI · Agriculture</div>
+        <div class="proj-title">Agricultural Image Detection System</div>
+        <div class="proj-desc">YOLO model identifying agricultural features and anomalies from field images — designed for edge deployment on low-power embedded hardware.</div>
+        <ul class="proj-hl">
+          <li>Architected for ESP32-CAM and Raspberry Pi deployment</li>
+          <li>Bridges cloud AI inference with constrained hardware</li>
+          <li>Crop health and anomaly detection pipeline</li>
+        </ul>
+      </div>
+      <div class="proj-bot"><div class="proj-stack"><span class="proj-tag">YOLO v10</span><span class="proj-tag">OpenCV</span><span class="proj-tag">ESP32-CAM</span><span class="proj-tag">Raspberry Pi</span><span class="proj-tag">Edge AI</span></div></div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-cat">IoT · Embedded · Industrial</div>
+        <div class="proj-title">EOT Crane Safety Monitoring System</div>
+        <div class="proj-desc">Real-time sensor network for overhead crane monitoring — predictive maintenance scheduling with live Power BI dashboards for industrial plant managers.</div>
+        <ul class="proj-hl">
+          <li>Industrial-grade sensor network with live telemetry</li>
+          <li>Predictive maintenance from real sensor data</li>
+          <li>Power BI dashboard integration for plant floor</li>
+        </ul>
+      </div>
+      <div class="proj-bot"><div class="proj-stack"><span class="proj-tag">ESP32</span><span class="proj-tag">MODBUS</span><span class="proj-tag">C++</span><span class="proj-tag">Power BI</span><span class="proj-tag">FreeRTOS</span></div></div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-cat">Edge AI · Robotics</div>
+        <div class="proj-title">AI-on-Chip Solar Panel Cleaning Robot</div>
+        <div class="proj-desc">Autonomous robot with embedded AI — eliminates manual panel cleaning and recovers 10–15% lost solar output per client installation.</div>
+        <ul class="proj-hl">
+          <li><strong>10–15% solar energy recovery</strong> per installation</li>
+          <li>Embedded AI + custom PCB + motor control algorithms</li>
+          <li>Full design, prototype, and site deployment lifecycle</li>
+        </ul>
+      </div>
+      <div class="proj-bot"><div class="proj-stack"><span class="proj-tag">ESP32</span><span class="proj-tag">FreeRTOS</span><span class="proj-tag">Eagle PCB</span><span class="proj-tag">C++</span><span class="proj-tag">Embedded AI</span></div></div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-cat">Computer Vision · Transit</div>
+        <div class="proj-title">People Counting System — Public Transit</div>
+        <div class="proj-desc">Real-time people counting for buses using Raspberry Pi and CV — automated ridership data with onboard constrained-edge processing.</div>
+        <ul class="proj-hl">
+          <li>Camera-based detection on Raspberry Pi onboard</li>
+          <li>Designed for low-power, constrained environments</li>
+          <li>Real-time ridership analytics for transit operators</li>
+        </ul>
+      </div>
+      <div class="proj-bot"><div class="proj-stack"><span class="proj-tag">Raspberry Pi</span><span class="proj-tag">Python</span><span class="proj-tag">Computer Vision</span><span class="proj-tag">Real-Time</span></div></div>
+    </div>
+  </div>
+</div>
+</section>
 
-                <div class="reveal glass rounded-3xl overflow-hidden group" style="transition-delay: 300ms;">
-                    <div class="h-48 bg-green-900/20 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-xs font-bold tracking-tighter glass px-3 py-1 rounded-full uppercase">Embedded Systems</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg mb-2">Solar Cleaner Bot</h4>
-                        <p class="text-gray-400 text-xs mb-4">Autonomous robot powered by ESP32, featuring custom PCB design and motor control algorithms.</p>
-                        <div class="flex gap-2">
-                            <span class="text-[10px] bg-green-500/10 text-green-400 px-2 py-1 rounded border border-green-500/20 font-bold">C++</span>
-                            <span class="text-[10px] bg-green-500/10 text-green-400 px-2 py-1 rounded border border-green-500/20 font-bold">FreeRTOS</span>
-                        </div>
-                    </div>
-                </div>
+<!-- RESEARCH -->
+<section id="research">
+<div class="wrap">
+  <div class="sec-hdr reveal">
+    <div class="sec-tag">Research &amp; Innovation</div>
+    <h2 class="sec-title">Patent-Pending<br>Researcher.</h2>
+  </div>
+  <div class="patent-card reveal">
+    <div class="pat-ic">🔬</div>
+    <div class="pat-title">Novel Communication Protocol for Embedded Device Networks</div>
+    <div class="pat-org">Co-Author &middot; DICE — Digital Integration Centre of Excellence, Saskatchewan Polytechnic &middot; 2025</div>
+    <p style="color:var(--muted);font-size:.88rem;line-height:1.8;max-width:680px;">A patent-pending embedded communication protocol developed at Saskatchewan Polytechnic's DICE research centre — a recognition reserved for fewer than 5% of applied research projects. Validated under adversarial and edge-case conditions with Kali Linux penetration testing.</p>
+    <div class="pat-grid">
+      <div class="pat-item"><div class="pat-it">Recognition</div><div class="pat-tx"><div class="big-n">Top 5%</div>of applied research at Saskatchewan Polytechnic</div></div>
+      <div class="pat-item"><div class="pat-it">Literature Scope</div><div class="pat-tx">Reviewed <strong>40+ peer-reviewed sources</strong> establishing methodology and differentiating from prior art</div></div>
+      <div class="pat-item"><div class="pat-it">Security Validation</div><div class="pat-tx">Penetration testing via <strong>Kali Linux</strong> under adversarial network conditions</div></div>
+      <div class="pat-item"><div class="pat-it">Implementation</div><div class="pat-tx">Python simulations modelling protocol under <strong>edge-case and adversarial scenarios</strong></div></div>
+    </div>
+  </div>
+  <div style="margin-top:3rem;">
+    <div class="sec-tag" style="margin-bottom:1.5rem;">Career Highlights by Numbers</div>
+    <div class="wins-grid">
+      <div class="win-card reveal"><div class="win-n">80%</div><div class="win-d">Reduction in manual inventory counting via <strong>YOLO production CV system</strong></div></div>
+      <div class="win-card reveal"><div class="win-n gn">75%</div><div class="win-d">Less manual image review time at <strong>mPowered Technology Solutions</strong></div></div>
+      <div class="win-card reveal"><div class="win-n pu">6 hrs</div><div class="win-d">Weekly manual reporting eliminated via <strong>automated Python workflows</strong></div></div>
+      <div class="win-card reveal"><div class="win-n am">15%</div><div class="win-d">Solar energy recovered per client via <strong>autonomous AI cleaning robot</strong></div></div>
+      <div class="win-card reveal"><div class="win-n">0</div><div class="win-d">Environment failures after full <strong>Docker containerization</strong> of ML pipelines</div></div>
+      <div class="win-card reveal"><div class="win-n gn">72h</div><div class="win-d">Early failure detection on welding machines via <strong>vibration/thermal sensors</strong></div></div>
+    </div>
+  </div>
+</div>
+</section>
 
-            </div>
-        </section>
+<!-- EDUCATION -->
+<section id="education">
+<div class="wrap">
+  <div class="sec-hdr reveal">
+    <div class="sec-tag">Education &amp; Certifications</div>
+    <h2 class="sec-title">Dual-Certified<br>in Canada.</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-sec reveal">
+      <h3>Education</h3>
+      <div class="edu-item">
+        <div class="edu-yr">APR 2025</div>
+        <div class="edu-deg">Post-Graduate Diploma — Technology Management</div>
+        <div class="edu-sch">Saskatchewan Polytechnic &middot; Moose Jaw, Canada 🍁</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-yr">APR 2024</div>
+        <div class="edu-deg">Post-Graduate Diploma — Artificial Intelligence &amp; Data Analytics</div>
+        <div class="edu-sch">Saskatchewan Polytechnic &middot; Regina, Canada 🍁</div>
+      </div>
+      <div class="edu-item p">
+        <div class="edu-yr">APR 2011</div>
+        <div class="edu-deg">Bachelor of Engineering — Electronics &amp; Telecommunication</div>
+        <div class="edu-sch">R C Patel Institute of Technology &middot; India</div>
+      </div>
+    </div>
+    <div class="edu-sec reveal">
+      <h3>Credentials</h3>
+      <div class="cert-item">
+        <div class="cert-ic">🤖</div>
+        <div><div class="cert-nm">AI &amp; Data Analytics</div><div class="cert-iss">Saskatchewan Polytechnic — Post-Graduate Diploma</div></div>
+        <div class="cert-yr">2024</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-ic">📋</div>
+        <div><div class="cert-nm">Technology Management</div><div class="cert-iss">Saskatchewan Polytechnic — Post-Graduate Diploma</div></div>
+        <div class="cert-yr">2025</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-ic">🔬</div>
+        <div><div class="cert-nm">Patent Co-Author — Embedded Protocol</div><div class="cert-iss">DICE / Saskatchewan Polytechnic — Patent Pending</div></div>
+        <div class="cert-yr">2025</div>
+      </div>
+      <div class="cert-item" style="border-color:rgba(0,200,248,.22)">
+        <div class="cert-ic" style="background:rgba(0,200,248,.1)">🍁</div>
+        <div><div class="cert-nm">Canadian Open Work Permit</div><div class="cert-iss">Eligible to work full-time anywhere in Canada</div></div>
+        <div class="cert-yr" style="color:var(--accent)">Active</div>
+      </div>
+      <div class="cert-item" style="border-color:rgba(124,92,191,.22)">
+        <div class="cert-ic" style="background:rgba(124,92,191,.1)">⚡</div>
+        <div><div class="cert-nm">B.Eng — Electronics &amp; Telecom</div><div class="cert-iss">R C Patel Institute of Technology, India</div></div>
+        <div class="cert-yr">2011</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
-        <section class="py-24 container mx-auto px-6 text-center">
-            <div class="reveal glass p-12 rounded-[3rem] border-t border-white/20 relative overflow-hidden">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-blue-600/20 blur-[100px]"></div>
-                <h3 class="text-4xl font-extrabold mb-6 relative">Let's build the <span class="text-blue-400">Future</span>.</h3>
-                <p class="text-gray-400 text-lg mb-10 max-w-xl mx-auto relative">Open to roles in AI Engineering, Software Development, and IoT Architecture. Based in Saskatchewan, ready to relocate.</p>
-                
-                <div class="flex flex-wrap justify-center gap-6 relative">
-                    <a href="mailto:Siddharth.m.gajjar@gmail.com" class="bg-white text-black px-10 py-4 rounded-full font-bold hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition">Email Siddharth</a>
-                    <a href="tel:+13065105025" class="border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-white/5 transition">+1 306 510 5025</a>
-                </div>
-            </div>
-        </section>
-    </main>
+<!-- CONTACT -->
+<section id="contact">
+<div class="wrap">
+  <div class="contact-wrap">
+    <div class="reveal">
+      <div class="sec-tag">Get In Touch</div>
+      <h2 class="sec-title">Let's Build<br>Something Great.</h2>
+      <p style="color:var(--muted);margin-top:1rem;font-size:.88rem;line-height:1.8;">Actively seeking full-time roles in <strong style="color:var(--text)">ML Engineering, AI Development, Computer Vision, or Embedded AI</strong>. Based in Regina, SK — open to relocation anywhere in Canada or remote work.</p>
+      <div class="contact-links">
+        <a href="mailto:Siddharth.m.gajjar@gmail.com" class="contact-link">
+          <div class="cl-ic">✉</div>
+          <div><div class="cl-lbl">Email</div><div class="cl-val">Siddharth.m.gajjar@gmail.com</div></div>
+        </a>
+        <a href="tel:+13065105025" class="contact-link">
+          <div class="cl-ic">📞</div>
+          <div><div class="cl-lbl">Phone</div><div class="cl-val">+1 306 510 5025</div></div>
+        </a>
+        <a href="https://linkedin.com/in/Siddharth-gajjar" target="_blank" class="contact-link">
+          <div class="cl-ic">💼</div>
+          <div><div class="cl-lbl">LinkedIn</div><div class="cl-val">linkedin.com/in/Siddharth-gajjar</div></div>
+        </a>
+        <a href="https://github.com/siddharth-gajjar-522691" target="_blank" class="contact-link">
+          <div class="cl-ic">⚡</div>
+          <div><div class="cl-lbl">GitHub</div><div class="cl-val">siddharth-gajjar-522691</div></div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-right reveal">
+      <div class="sec-tag" style="margin-bottom:1.2rem">Quick Message</div>
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="Jane Smith"></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="jane@company.com"></div>
+      <div class="fg"><label>Subject</label><input type="text" placeholder="ML Engineer Role at ACME Corp"></div>
+      <div class="fg"><label>Message</label><textarea placeholder="I'd love to discuss a computer vision opportunity..."></textarea></div>
+      <button class="form-btn" onclick="this.textContent='Message Sent! ✓';this.style.background='var(--accent3)';this.style.color='var(--bg)'">Send Message →</button>
+    </div>
+  </div>
+</div>
+</section>
 
-    <footer class="py-12 text-center text-gray-600 text-sm border-t border-white/5">
-        &copy; 2026 Siddharth Gajjar | AI & Embedded Engineer
-    </footer>
+<footer>
+  <div class="fc">© 2026 <span>Siddharth Gajjar</span> &middot; AI &amp; ML Engineer &middot; Made with 🤖 in Saskatchewan, Canada</div>
+  <div class="fl">
+    <a href="mailto:Siddharth.m.gajjar@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/Siddharth-gajjar" target="_blank">LinkedIn</a>
+    <a href="https://github.com/siddharth-gajjar-522691" target="_blank">GitHub</a>
+    <a href="https://siddharth-gajjar-522691.github.io/Siddharth-gajjar.github.io/" target="_blank">Current Site</a>
+  </div>
+</footer>
 
-    <script>
-        // Reveal on scroll logic
-        const observerOptions = { threshold: 0.15 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
+<script>
+// CURSOR
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
+let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function anim(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(anim);})();
+document.querySelectorAll('a,button,.proj-card,.sk-cat,.win-card,.cert-item,.edu-item').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
+// THREE.JS 3D BACKGROUND
+(function(){
+  const canvas=document.getElementById('canvas-bg');
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+  renderer.setSize(innerWidth,innerHeight);
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,1000);
+  cam.position.z=80;
+
+  // Particle field
+  const N=2400, geo=new THREE.BufferGeometry();
+  const pos=new Float32Array(N*3), col=new Float32Array(N*3);
+  for(let i=0;i<N;i++){
+    pos[i*3]=(Math.random()-.5)*210;
+    pos[i*3+1]=(Math.random()-.5)*210;
+    pos[i*3+2]=(Math.random()-.5)*160;
+    const r=Math.random();
+    if(r<.5){col[i*3]=0;col[i*3+1]=.78;col[i*3+2]=.97;}
+    else if(r<.75){col[i*3]=.49;col[i*3+1]=.36;col[i*3+2]=.75;}
+    else{col[i*3]=0;col[i*3+1]=.96;col[i*3+2]=.63;}
+  }
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+  const pts=new THREE.Points(geo,new THREE.PointsMaterial({size:.45,vertexColors:true,transparent:true,opacity:.55,sizeAttenuation:true}));
+  scene.add(pts);
+
+  // Wireframe sphere
+  const sph=new THREE.Mesh(
+    new THREE.SphereGeometry(28,18,18),
+    new THREE.MeshBasicMaterial({color:0x00c8f8,wireframe:true,transparent:true,opacity:.038})
+  );
+  scene.add(sph);
+
+  // Grid plane
+  const gv=[];
+  for(let i=-12;i<=12;i++){gv.push(i*9,-62,-90,i*9,-62,90);gv.push(-110,-62,i*7.5,110,-62,i*7.5);}
+  const gg=new THREE.BufferGeometry();
+  gg.setAttribute('position',new THREE.BufferAttribute(new Float32Array(gv),3));
+  scene.add(new THREE.LineSegments(gg,new THREE.LineBasicMaterial({color:0x00c8f8,transparent:true,opacity:.038})));
+
+  // Torus ring
+  const tor=new THREE.Mesh(
+    new THREE.TorusGeometry(40,0.3,8,80),
+    new THREE.MeshBasicMaterial({color:0x7c5cbf,transparent:true,opacity:.08})
+  );
+  tor.rotation.x=1.2;
+  scene.add(tor);
+
+  let scrollY=0;
+  window.addEventListener('scroll',()=>scrollY=window.scrollY);
+  window.addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+
+  let t=0;
+  (function anim(){requestAnimationFrame(anim);t+=.003;
+    pts.rotation.y=t*.1;pts.rotation.x=t*.035;
+    sph.rotation.y=t*.14;sph.rotation.x=t*.07;
+    tor.rotation.z=t*.06;
+    cam.position.y=-scrollY*.012;
+    renderer.render(scene,cam);
+  })();
+})();
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// SKILL BARS — animate when category scrolls in
+const barObs=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting) e.target.querySelectorAll('.sk-b').forEach(b=>b.style.width=(b.dataset.w||0)+'%');
+}),{threshold:.2});
+document.querySelectorAll('.sk-cat').forEach(el=>barObs.observe(el));
+
+// NAV ACTIVE
+const secs=document.querySelectorAll('section[id]');
+const nls=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  nls.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--accent)':'';});
+});
+</script>
 </body>
 </html>
